@@ -60,9 +60,9 @@ RUN apt-get update \
 
 #Install php-excimer
 RUN apt-get update \
-    && apt-get install -y php-excimer \
     && pecl install excimer \
 	&& echo "extension=excimer.so"  > /etc/php/8.1/mods-available/excimer.ini \
+    && phpenmod excimer
 
 RUN locale-gen en_AU.UTF-8
 
