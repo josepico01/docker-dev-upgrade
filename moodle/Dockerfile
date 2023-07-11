@@ -1,4 +1,4 @@
-FROM ubuntu:18.04
+FROM ubuntu:22.04
 
 ARG DEBIAN_FRONTEND=noninteractive
 
@@ -40,7 +40,7 @@ RUN cd /usr/src \
    && make \
    && make install \
    && pecl install xdiff \
-   && echo "extension=xdiff.so" > /etc/php/7.2/mods-available/xdiff.ini \
+   && echo "extension=xdiff.so" > /etc/php/8.1/mods-available/xdiff.ini \
    && phpenmod xdiff
 
 #Install wkhtmltopdf
@@ -54,7 +54,7 @@ RUN wget https://github.com/wkhtmltopdf/packaging/releases/download/0.12.6-1/wkh
 RUN apt-get update \
     && apt-get install -y libmagickwand-dev ghostscript --no-install-recommends \
     && pecl install imagick \
-	&& echo "extension=imagick.so"  > /etc/php/7.2/mods-available/imagick.ini \
+	&& echo "extension=imagick.so"  > /etc/php/8.1/mods-available/imagick.ini \
     && phpenmod imagick \
     && sed -i 's/^.*policy.*coder.*none.*PDF.*//' /etc/ImageMagick-6/policy.xml
 
@@ -71,7 +71,7 @@ RUN mkdir /var/lib/sitedata \
 
 COPY nginx-site /etc/nginx/sites-available/default
 COPY nginx.conf /etc/nginx/nginx.conf
-COPY xdebug.ini /etc/php/7.2/mods-available/xdebug.ini
+COPY xdebug.ini /etc/php/8.1/mods-available/xdebug.ini
 
 COPY entrypoint.sh /
 RUN chmod +x /entrypoint.sh

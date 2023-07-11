@@ -2,7 +2,7 @@ version: '3.5'
 
 services:
   db:
-    image: postgres:9.6
+    image: postgres:12
     restart: always
     environment:
       POSTGRES_PASSWORD: L0c4l_P4ssW0rd
@@ -12,7 +12,7 @@ services:
       - 'db:/var/lib/postgresql'
 
   test-db:
-    image: postgres:9.6
+    image: postgres:12
     restart: always
     environment:
       POSTGRES_PASSWORD: L0c4l_P4ssW0rd
