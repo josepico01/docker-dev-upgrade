@@ -46,7 +46,7 @@ RUN cd /usr/src \
 #Install wkhtmltopdf
 RUN wget https://github.com/wkhtmltopdf/packaging/releases/download/0.12.6-1/wkhtmltox_0.12.6-1.bionic_amd64.deb \
     && apt-get update \
-    && apt-get install -y xvfb libfontconfig fontconfig libpng16-16 libxrender1 xfonts-75dpi build-essential xorg \
+    && apt-get install -y xvfb libssl1.1 libfontconfig fontconfig libpng16-16 libxrender1 xfonts-75dpi build-essential xorg \
     && dpkg -i wkhtmltox_0.12.6-1.bionic_amd64.deb \
     && which wkhtmltopdf
 
