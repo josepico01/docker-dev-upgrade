@@ -45,7 +45,7 @@ RUN cd /usr/src \
    && phpenmod xdiff
 
 #Install dependancy for wkhtmltopdf in ubuntu 22.04
-RUN wget wget https://mirror.sit.fraunhofer.de/ubuntu/pool/main/o/openssl/libssl1.1_1.1.1l-1ubuntu1.2_amd64.deb \
+RUN wget https://mirror.sit.fraunhofer.de/ubuntu/pool/main/o/openssl/libssl1.1_1.1.1l-1ubuntu1.2_amd64.deb \
     && dpkg -i libssl1.1_1.1.1l-1ubuntu1.2_amd64.deb
 
 #Install wkhtmltopdf
