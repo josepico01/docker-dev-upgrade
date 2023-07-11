@@ -29,7 +29,8 @@ RUN apt-get update -y \
     vim \
     wget \
     php-pear \
-    php-dev
+    php-dev \
+    xfonts-75dpi
 
 #Install xdiff
 RUN cd /usr/src \
@@ -43,11 +44,15 @@ RUN cd /usr/src \
    && echo "extension=xdiff.so" > /etc/php/8.1/mods-available/xdiff.ini \
    && phpenmod xdiff
 
+#Install dependancy for wkhtmltopdf in ubuntu 22.04
+RUN wget sudo wget https://mirror.sit.fraunhofer.de/ubuntu/pool/main/o/openssl/libssl1.1_1.1.1l-1ubuntu1.2_amd64.deb \
+    && dpkg -i libssl1.1_1.1.1l-1ubuntu1.2_amd64.deb
+
 #Install wkhtmltopdf
-RUN wget https://github.com/wkhtmltopdf/packaging/releases/download/0.12.6-1/wkhtmltox_0.12.6-1.bionic_amd64.deb \
+RUN wget https://github.com/wkhtmltopdf/packaging/releases/download/0.12.6.1-2/wkhtmltox_0.12.6.1-2.jammy_amd64.deb \
     && apt-get update \
-    && apt-get install -y xvfb libssl1.1 libfontconfig fontconfig libpng16-16 libxrender1 xfonts-75dpi build-essential xorg \
-    && dpkg -i wkhtmltox_0.12.6-1.bionic_amd64.deb \
+    && apt-get install -y xvfb libfontconfig fontconfig libpng16-16 libxrender1 xfonts-75dpi build-essential xorg \
+    && dpkg -i wkhtmltox_0.12.6.1-2.jammy_amd64.deb \
     && which wkhtmltopdf
 
 #Install Imagick
